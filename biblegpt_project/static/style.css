@@ -1,0 +1,213 @@
+:root {
+    --background-light: #f4f9ff;
+    --background-dark: #1a1a1a;
+    --card-light: #ffffff;
+    --card-dark: #2a2a2a;
+    --text-light: #333;
+    --text-dark: #f0f0f0;
+    --primary: #007bff;
+    --accent: #4db8ff;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+body.dark-mode {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-light);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+body.dark-mode .container {
+    background-color: var(--card-dark);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    animation: fadeInDown 0.6s ease;
+}
+
+.search-section,
+.generate-section,
+.btn-group,
+.mode-toggle {
+    margin: 20px 0;
+    animation: fadeIn 0.6s ease;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: border-color var(--transition-speed);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#verseDisplay,
+#generateDisplay {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+    font-size: 1.2em;
+    animation: fadeIn 0.6s ease;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+body.dark-mode #verseDisplay,
+body.dark-mode #generateDisplay {
+    background-color: #333;
+    color: var(--text-dark);
+}
+
+#errorDisplay {
+    margin-top: 20px;
+    color: red;
+    font-weight: bold;
+    animation: fadeIn 0.6s ease;
+}
+
+#loader {
+    margin-top: 20px;
+    font-size: 1.4em;
+    color: var(--primary);
+    animation: pulse 1.5s infinite;
+}
+
+#toggleDarkMode {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode #toggleDarkMode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    input[type="text"],
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .btn-group,
+    .search-section,
+    .generate-section {
+        text-align: center;
+    }
+}
+/* Dark mode styles for mobile */
+@media (max-width: 600px) and (prefers-color-scheme: dark) {
+    body {
+        background: var(--background-dark);
+        color: var(--text-dark);
+    }
+
+    .container {
+        background-color: var(--card-dark);
+    }
+
+    #verseDisplay,
+    #generateDisplay {
+        background-color: #444;
+        color: var(--text-dark);
+    }
+}
